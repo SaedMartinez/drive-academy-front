@@ -36,4 +36,10 @@ export class StudentService {
       responseType: "json"
     });
   }
+
+  createStudent(student: StudentModel): Observable<Object>{
+    return this.http.post( `${this.BASE_URL}/create/student`, student, {
+      responseType: "json"
+    });
+  }
 }

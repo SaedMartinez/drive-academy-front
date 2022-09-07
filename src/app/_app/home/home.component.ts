@@ -14,15 +14,9 @@ export class HomeComponent implements OnInit {
 
   loadingPage = true;
 
-  columnNames = ['Nombre', 'Edad', 'CC', 'Licencia', '',];
+  columnNames = ['Nombre', 'Edad', 'CC', 'Licencia', 'Ver detalle',];
   attributeNames = ['name', 'age', 'dni', 'license.typeName', 'details',];
 
-  dummy = [
-    {name: "sami1", age: "1", dni:"cc1"},
-    {name: "sami2", age: "2", dni:"cc2"},
-    {name: "sami3", age: "3", dni:"cc3"},
-    {name: "sami4", age: "4", dni:"cc4"},
-  ]
   public dataSource = new MatTableDataSource<StudentModel>();
 
   st = new StudentModel();
@@ -42,14 +36,32 @@ export class HomeComponent implements OnInit {
         this.loadingPage = false;
       }
     },err => {
-      console.log("nada mk");
+      console.log(err);
     });
   }
 
-  openStudentModal(student: StudentModel){
+  openDetailStudentModal(student: StudentModel){
     this.dialog.open(StudentDetailsComponent, {
       data: {
-        studentSelected: student  
+        studentSelected: student ,
+        title: 'Detalles de estudiante',
+        operation: 'update'
+      },
+      width: '80%',
+      height: '85%',
+    }).afterClosed().subscribe( res => {
+      if (res === 'reload') {
+        this.ngOnInit();
+      }
+    });
+  }
+
+  openNewStudentModal(){
+    this.dialog.open(StudentDetailsComponent, {
+      data: {
+        studentSelected: new StudentModel(),
+        title: 'Nuevo Estudiante:',
+        operation: 'new'
       },
       width: '80%',
       height: '85%',

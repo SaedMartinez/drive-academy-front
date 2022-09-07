@@ -43,6 +43,19 @@
 
 }
 
+.first-card{
+    overflow: hidden;
+}
+
+.ripple-container{
+    cursor: pointer;
+    text-align: center;
+  
+    width: 100%;
+    height: 100%;
+    line-height: 100px;
+}
+
 .student-table-container{
     margin-left: 1em;
     overflow-x: scroll !important;
@@ -59,7 +72,6 @@
 .table-header{
     background-color: rgba(104, 92, 175, 0.849);
     color: #ffffff;
-    justify-content: center;
     font-size: 14px;
 }
 

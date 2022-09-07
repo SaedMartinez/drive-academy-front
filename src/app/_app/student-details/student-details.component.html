@@ -4,7 +4,7 @@
       <div fxLayout="column" fxFlex="90">
 
         <div fxLayoutAlign="center center" >
-            <div>Detalles de estudiante</div>
+            <div>{{title}}</div>
         </div>
 
       </div>
@@ -13,72 +13,112 @@
     <br><br>
 
     <mat-card-content class="temp">
-        <div fxLayout="row">
 
-            <div fxFlex="70" class="modules-container">
-                <mat-table [dataSource]="dataSource" class="modules-table">
+        <!-- Template Editar Estudiante -->
+        <ng-container *ngIf="operation !== 'new';else newTemplate">
+            <div fxLayout="row">
+
+                <div fxFlex="70" class="modules-container mat-elevation-z8">
+                    <mat-table [dataSource]="dataSource" class="modules-table">
+        
+                        <ng-container *ngFor="let column of attributeNames; index as i">
+                            <ng-container [matColumnDef]="column">
     
-                    <ng-container *ngFor="let column of attributeNames; index as i">
-                        <ng-container [matColumnDef]="column">
-
-                            <mat-header-cell *matHeaderCellDef>
-                                {{columnNames[i]}}
-                            </mat-header-cell>
-
-                            <ng-container *ngIf="column === 'level_fk';else normalInput">
-                                <mat-cell *matCellDef="let module">
-                                    {{module.course.level}} 
-                                </mat-cell>
-                            </ng-container>
-
-                            <ng-template #normalInput>
-                                <mat-cell *matCellDef="let module">
-                                    {{module[column]}} 
-                                </mat-cell>
-                            </ng-template>
-                          </ng-container>
-
-                    </ng-container>
-                  
-                    <mat-header-row *matHeaderRowDef="attributeNames"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: attributeNames;"></mat-row>
-                </mat-table>
+                                <mat-header-cell *matHeaderCellDef class="table-header">
+                                    {{columnNames[i]}}
+                                </mat-header-cell>
+    
+                                <ng-container *ngIf="column === 'level_fk';else normalInput">
+                                    <mat-cell *matCellDef="let module">
+                                        {{module.course.level}} 
+                                    </mat-cell>
+                                </ng-container>
+    
+                                <ng-template #normalInput>
+                                    <mat-cell *matCellDef="let module">
+                                        {{module[column]}} 
+                                    </mat-cell>
+                                </ng-template>
+                              </ng-container>
+    
+                        </ng-container>
+                      
+                        <mat-header-row *matHeaderRowDef="attributeNames"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: attributeNames;"></mat-row>
+                    </mat-table>
+                </div>
+    
+                <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" autocomplete="off" fxFlex="30" class="form-container">
+                    <div fxLayout="row">
+                        <mat-form-field fxFlex="80">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput placeholder="Nombre" autocomplete="off" formControlName="name" class="form-control" required>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row">
+                        <mat-form-field fxFlex="80">
+                            <mat-label>DNI</mat-label>
+                            <input matInput  autocomplete="off" placeholder="10.10101010 - CC"  formControlName="dni" class="form-control" required>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row">
+                        <mat-form-field fxFlex="80">
+                            <mat-label>EDAD</mat-label>
+                            <input matInput  autocomplete="off" placeholder="Edad"  formControlName="age" class="form-control" required>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row">
+                        <mat-form-field fxFlex="80">
+                            <mat-label>LICENCIA</mat-label>
+                            <input matInput  autocomplete="off" readonly="true" placeholder="Licencia deseada"  formControlName="license" class="form-control" required>
+                        </mat-form-field>
+                    </div>
+                    <br>
+                    <div class="button" fxLayout="row" fxLayoutAlign="end end">
+                        <button mat-raised-button color="accent" [disabled]="loadingPage">
+                            <span *ngIf="loadingPage" class="spinner-border spinner-border-sm mr-1"></span>
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+    
             </div>
+        </ng-container>
 
-            <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" autocomplete="off" fxFlex="30" class="form-container">
+        <!-- Template Nuevo Estudiante -->
+        <ng-template #newTemplate>
+            <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" autocomplete="off" fxFlex="100" class="form-container">
                 <div fxLayout="row">
-                    <mat-form-field fxFlex="80">
+                    <mat-form-field fxFlex="40" class="new-input">
                         <mat-label>Nombre</mat-label>
                         <input matInput placeholder="Nombre" autocomplete="off" formControlName="name" class="form-control" required>
                     </mat-form-field>
-                </div>
-                <div fxLayout="row">
-                    <mat-form-field fxFlex="80">
+
+                    <mat-form-field fxFlex="40" class="new-input">
                         <mat-label>DNI</mat-label>
                         <input matInput  autocomplete="off" placeholder="10.10101010 - CC"  formControlName="dni" class="form-control" required>
                     </mat-form-field>
                 </div>
                 <div fxLayout="row">
-                    <mat-form-field fxFlex="80">
+                    <mat-form-field fxFlex="40" class="new-input">
                         <mat-label>EDAD</mat-label>
                         <input matInput  autocomplete="off" placeholder="Edad"  formControlName="age" class="form-control" required>
                     </mat-form-field>
-                </div>
-                <div fxLayout="row">
-                    <mat-form-field fxFlex="80">
+
+                    <mat-form-field fxFlex="40" class="new-input">
                         <mat-label>LICENCIA</mat-label>
-                        <input matInput  autocomplete="off" readonly="true" placeholder="Licencia deseada"  formControlName="license" class="form-control" required>
+                        <input matInput  autocomplete="off" placeholder="Licencia deseada"  formControlName="license" class="form-control" required>
                     </mat-form-field>
                 </div>
+
                 <br>
-                <div class="button" fxLayout="row" fxLayoutAlign="end end">
-                    <button mat-raised-button color="accent" [disabled]="loadingPage">
+                <div class="button" fxLayout="row" fxLayoutAlign="start center">
+                    <button mat-raised-button class="new-button" [disabled]="loadingPage">
                         <span *ngIf="loadingPage" class="spinner-border spinner-border-sm mr-1"></span>
                         Guardar
                     </button>
                 </div>
             </form>
-
-        </div>
+        </ng-template>
     </mat-card-content>
 </mat-card>
