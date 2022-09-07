@@ -1,0 +1,68 @@
+<div fxFlex="row" class="container">
+    <mat-grid-list cols="9" rowHeight="70px">
+
+        <mat-grid-tile colspan="9" rowspan="2" style="background-color: lightblue;">
+            <div class="grid-content" fxLayout="row">
+
+                <div class="tittle-container" fxFlex="60">
+                    <div class="tittle-1">Hola de nuevo!</div>
+                    <div class="tittle-2">Podrias empezar hoy revisando</div>
+                </div>
+
+                <div class="side-tittle" fxFlex="40">
+                    <mat-chip-list fxLayout="column" class="chips-container">
+                        <mat-chip fxFlex="40">
+                            Semaforos
+                        </mat-chip>
+    
+                        <mat-chip fxFlex="40">
+                            por implementar
+                        </mat-chip>
+    
+                    </mat-chip-list>
+                </div>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="4" style="background-color: lightgreen;">
+            <div class="grid-content" fxLayout="column">
+                <br>
+                <mat-card fxFlex="45">Simple card</mat-card>
+                <br>
+                <mat-card fxFlex="45">Simple card</mat-card>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="5" rowspan="5" style="background-color: lightcoral;">
+            <div class="grid-content mat-elevation-z8">
+
+                <div class="student-table-container">
+                    <mat-table [dataSource]="dataSource" class="student-table">
+
+                        <ng-container *ngFor="let column of attributeNames; index as i">
+                            <ng-container [matColumnDef]="column">
+    
+                                <mat-header-cell *matHeaderCellDef>
+                                    {{columnNames[i]}}
+                                </mat-header-cell>
+    
+                                <mat-cell *matCellDef="let student">
+                                    {{student[column]}} 
+                                </mat-cell>
+                              </ng-container>
+    
+                        </ng-container>
+                      
+                        <mat-header-row *matHeaderRowDef="attributeNames"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: attributeNames;"></mat-row>
+                    </mat-table>
+                    <mat-paginator class="student-table" [pageSizeOptions]="[4]" showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+
+
+            </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+</div>
