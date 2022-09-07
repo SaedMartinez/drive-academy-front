@@ -1,0 +1,40 @@
+.container{
+    background-color: rgb(247, 253, 255);
+}
+
+.modules-container{
+/*     background-color: lightpink; */
+    margin-right: 2em;
+    border-radius: 15px;
+}
+
+.table-header{
+    background-color: rgba(104, 92, 175, 0.849);
+    color: #ffffff;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.form-container{
+    padding-left: 3em;
+    /* background-color: rgba(47, 75, 65, 0.244); */
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+
+.new-input{
+    margin: 1.5em;
+}
+
+.input-container{
+    width: 90%;
+}       
+
+.new-button{
+    background-color: #539765;
+    color: rgb(216, 216, 216);
+    width: 90em;
+    line-height: 6em;
+    margin-left: -4em;
+}

@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {A11yModule} from '@angular/cdk/a11y';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PortalModule} from '@angular/cdk/portal';
@@ -43,10 +44,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   exports: [
     A11yModule,
+    BrowserAnimationsModule,
     ClipboardModule,
     CdkStepperModule,
     CdkTableModule,
@@ -91,6 +94,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    FlexLayoutModule
   ]
 })
 export class MaterialModule { }

@@ -1,0 +1,89 @@
+.container{
+    padding: 1em;
+    /* background-color: rgb(76, 105, 105); */
+}
+
+.grid-content-full{
+    width: 99%;
+    height: 96%;
+}
+
+.grid-content-mid{
+    width: 88%;
+    height: 96%;
+}
+
+.grid-content-mini{
+    width: 78%;
+    height: 96%;
+}
+
+.tittle-container{
+    font-family: 'Quicksand', sans-serif;
+    color:#00153be4;
+    margin: 1em;
+    padding: 1.5em 2em 0.5em 0.5em;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 35px;
+    height: 100%;
+    align-self: center;
+    /* background-color: bisque; */
+}
+
+.side-tittle{
+    /* background-color: bisque; */
+}
+
+.tittle-1{
+    margin-top: 10px;
+}
+
+.tittle-2{
+
+}
+
+.first-card{
+    overflow: hidden;
+}
+
+.ripple-container{
+    cursor: pointer;
+    text-align: center;
+  
+    width: 100%;
+    height: 100%;
+    line-height: 100px;
+}
+
+.student-table-container{
+    margin-left: 1em;
+    overflow-x: scroll !important;
+    overflow-y: hidden;
+    border-radius: 15px;
+    height: 93%;
+    width: 97%;
+}
+
+.student-table{
+    width: 110%;
+}
+
+.table-header{
+    background-color: rgba(104, 92, 175, 0.849);
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.student-table-container::-webkit-scrollbar{
+    height: 3.5em;
+}
+.student-table-container::-webkit-scrollbar-thumb{
+    border-bottom: 2px solid rgba(105, 40, 255, 0.9);
+}
+.student-table-container::-webkit-scrollbar-thumb{
+    border-bottom: 3px solid rgba(71, 38, 218, 0.9);
+}
+.student-table-container::-webkit-scrollbar-track:hover{
+    background-color: #d6e7ff25;
+}
