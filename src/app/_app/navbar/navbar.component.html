@@ -1,4 +1,9 @@
-<div fxFlex="row alig" fxLayoutAlign="space-around center" class="navbar">
-    <button mat-button color="primary">uno</button>
-    <button mat-button color="primary">dos</button>
+<div fxFlex="row alig" fxLayoutAlign="space-between center" class="navbar">
+    <div class="logo-container">
+        <span class="material-symbols-outlined logo">
+        no_crash
+        </span>
+        Driver Academy
+    </div>
+    <button mat-raised-button class="home-button" (click)="goHome()">Inicio</button>
 </div>

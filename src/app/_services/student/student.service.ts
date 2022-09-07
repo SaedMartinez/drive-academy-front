@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class StudentService {
 
-  BASE_URL = `${environment.backendAPI}/v1/students`;
+  BASE_URL = `${environment.backendAPI}/students`;
 
   constructor(
     private http: HttpClient
@@ -17,6 +17,22 @@ export class StudentService {
 
   searchAllStudents(): Observable<StudentModel[]>{
     return this.http.get<StudentModel[]>(`${this.BASE_URL}/all`, {
+      responseType: "json"
+    });
+  }
+
+  searchStudent(nameToSearch?: string, idToSearch?: number, other?: string): Observable<StudentModel>{
+    return this.http.get<StudentModel>(`${this.BASE_URL}/search/student`, {
+      params: {
+        name: nameToSearch != undefined ? nameToSearch : 'sin_nombre',
+        id: idToSearch != undefined ? idToSearch : 0
+      },
+      responseType: "json"
+    });
+  }
+
+  updateStudent(student: StudentModel): Observable<Object>{
+    return this.http.put( `${this.BASE_URL}/update/student`, student, {
       responseType: "json"
     });
   }

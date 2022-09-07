@@ -1,10 +1,20 @@
 .container{
     padding: 1em;
-    background-color: rgb(76, 105, 105);
+    /* background-color: rgb(76, 105, 105); */
 }
 
-.grid-content{
+.grid-content-full{
     width: 99%;
+    height: 96%;
+}
+
+.grid-content-mid{
+    width: 88%;
+    height: 96%;
+}
+
+.grid-content-mini{
+    width: 78%;
     height: 96%;
 }
 
@@ -18,11 +28,11 @@
     line-height: 35px;
     height: 100%;
     align-self: center;
-    background-color: bisque;
+    /* background-color: bisque; */
 }
 
 .side-tittle{
-    background-color: bisque;
+    /* background-color: bisque; */
 }
 
 .tittle-1{
@@ -39,10 +49,29 @@
     overflow-y: hidden;
     border-radius: 15px;
     height: 93%;
-    width: 95%;
+    width: 97%;
 }
 
 .student-table{
     width: 110%;
 }
 
+.table-header{
+    background-color: rgba(104, 92, 175, 0.849);
+    color: #ffffff;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.student-table-container::-webkit-scrollbar{
+    height: 3.5em;
+}
+.student-table-container::-webkit-scrollbar-thumb{
+    border-bottom: 2px solid rgba(105, 40, 255, 0.9);
+}
+.student-table-container::-webkit-scrollbar-thumb{
+    border-bottom: 3px solid rgba(71, 38, 218, 0.9);
+}
+.student-table-container::-webkit-scrollbar-track:hover{
+    background-color: #d6e7ff25;
+}
