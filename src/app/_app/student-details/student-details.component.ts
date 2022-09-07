@@ -88,12 +88,10 @@ export class StudentDetailsComponent implements OnInit {
     student.age = this.form['age'].value;
     student.dni = this.form['dni'].value;
 
-    debugger;
     if (this.studentSelected.id !== undefined) {
       student.id = this.studentSelected.id;
       student.license = this.studentSelected.license; 
     }else{
-      debugger;
       let license = new LicenseModel();
       license.typeName = student.dni = this.form['license'].value;
       student.license = license;
